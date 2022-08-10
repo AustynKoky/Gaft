@@ -1,5 +1,6 @@
 import requests
 import json
+import time
 
 print("Welcome to Gaft v1.0.0. Developed by Koky and Sully")
 
@@ -24,9 +25,9 @@ def sendEmail(ListingID):
     }
 
     url = "https://gateway.daft.ie/old/v1/reply"
-    # data = '{"name":"name","tcAccepted":true,"email":"he1llo@gmail.com,"message":"agagag","adId":4001666,"phone":"085811463112"}'
-    data = '{"name":' + str(myName) + '","tcAccepted":true,"email":' + str(myEmail) + '","message":' + str(myMessage) + '","adId":' + str(ListingID) + ',"phone":"' + str(myPhone) + '"}'
-
+    # data = '{"name":"name","tcAccepted":true,"email":"hello@gmail.com,"message":"agagag","adId":4001666,"phone":"085811463112"}'
+    data = '{"name":"' + str(myName) + '","tcAccepted":true,"email":"' + str(myEmail) + '","message":"' + str(myMessage) + '","adId":' + str(ListingID) + ',"phone":"' + str(myPhone) + '"}'
+    print(data)
     # data = {
     #     "name": myName,
     #     "tcAccepted":"true",
@@ -68,6 +69,7 @@ def getListing():
         ListingID = x['listing']['id']
         # print('Listing ID:' + ' ' + str(x['listing']['id']) + ' Price: ' + x['listing']['price'])
         sendEmail(ListingID)
+        time.sleep(10)
     # TODO: Add method to print number of beds and bathrooms
 
 getListing()
